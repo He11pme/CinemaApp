@@ -1,12 +1,12 @@
 package skillfactory.education.cinemaapp
 
 import android.os.Bundle
-import android.view.View
-import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.carousel.CarouselLayoutManager
+import com.google.android.material.carousel.CarouselSnapHelper
 import skillfactory.education.cinemaapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +21,24 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val imageList = mutableListOf<Int>()
+        imageList.add(R.drawable.film_one)
+        imageList.add(R.drawable.film_two)
+        imageList.add(R.drawable.film_three)
+        imageList.add(R.drawable.film_four)
+        imageList.add(R.drawable.film_five)
+        imageList.add(R.drawable.film_six)
+        imageList.add(R.drawable.film_seven)
+        imageList.add(R.drawable.film_nine)
+
+        binding.rvCarousel.apply {
+            setHasFixedSize(true)
+            layoutManager = CarouselLayoutManager()
+            adapter = CarouselAdapter(imageList)
+        }
+
+        CarouselSnapHelper().attachToRecyclerView(binding.rvCarousel)
 
     }
 
