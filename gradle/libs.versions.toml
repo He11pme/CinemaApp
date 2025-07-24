@@ -13,6 +13,7 @@ sdpAndroid = "1.1.1"
 sspAndroid = "1.1.1"
 materialVersion = "1.14.0-alpha02"
 recyclerview = "1.4.0"
+kotlinxCoroutinesCore = "1.10.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -27,6 +28,7 @@ sdp-android = { group = "com.intuit.sdp", name = "sdp-android", version.ref = "s
 ssp-android = { group = "com.intuit.ssp", name = "ssp-android", version.ref = "sspAndroid" }
 google-material = { group = "com.google.android.material", name = "material", version.ref = "materialVersion" }
 androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -3,14 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="@dimen/_134sdp"
     android:layout_height="@dimen/_202sdp"
-    android:layout_margin="@dimen/_8sdp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:shapeAppearance = "?attr/shapeAppearanceCornerExtraLarge">
+    android:layout_margin="@dimen/_4sdp"
+    >
 
     <ImageView
         android:id="@+id/poster"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        />
 
 </com.google.android.material.carousel.MaskableFrameLayout>

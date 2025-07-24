@@ -3,11 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-
         android:id="@+id/ic_avatar"
+        android:fillColor="?attr/colorControlNormal"
         android:icon="@drawable/ico_account_circle"
         android:title="Профиль"
-        app:showAsAction="always"
-        />
+        app:showAsAction="always" />
 
 </menu>
