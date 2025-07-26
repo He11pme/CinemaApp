@@ -6,15 +6,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import skillfactory.education.cinemaapp.databinding.PosterCarouselBinding
 
-class CarouselAdapter(private val imageList: MutableList<Int>) : RecyclerView.Adapter<CarouselAdapter.CarouselViewHolder>() {
+class CarouselAdapter(private val filmList: List<Film>) :
+    RecyclerView.Adapter<CarouselAdapter.CarouselViewHolder>() {
 
-    inner class CarouselViewHolder(private val binding: PosterCarouselBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(image: Int) {
+    //Наверное стоит использовать обычный RecyclerView а не Carousel
+    inner class CarouselViewHolder(private val binding: PosterCarouselBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(film: Film) {
             Picasso.get()
-                .load(image)
+                .load(film.poster)
                 .centerCrop()
                 .fit()
                 .into(binding.poster)
+
+            binding.tvName.text = film.name
+            binding.tvRating.text = film.rating.toString()
         }
     }
 
@@ -22,18 +28,24 @@ class CarouselAdapter(private val imageList: MutableList<Int>) : RecyclerView.Ad
         parent: ViewGroup,
         viewType: Int
     ): CarouselViewHolder {
-        return CarouselViewHolder(PosterCarouselBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return CarouselViewHolder(
+            PosterCarouselBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(
         holder: CarouselViewHolder,
         position: Int
     ) {
-        holder.bind(imageList[position])
+        holder.bind(filmList[position])
     }
 
     override fun getItemCount(): Int {
-        return imageList.size
+        return filmList.size
     }
 
 }

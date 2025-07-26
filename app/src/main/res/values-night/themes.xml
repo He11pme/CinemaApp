@@ -99,6 +99,23 @@
 
     </style>
 
+    <!--    Text View for rating film      -->
+
+    <style name="Widget.CinemaApp.TextViewRatingFilm.Color">
+
+        <item name="android:background">@color/orange_800</item>
+        <item name="android:textColor">@color/black</item>
+
+    </style>
+
+    <!--    Text View for name film      -->
+
+    <style name="Widget.CinemaApp.TextViewNameFilm.Color">
+
+        <item name="android:textColor">@color/gray_400</item>
+
+    </style>
+
     <style name="Theme.CinemaApp" parent="Base.Theme.CinemaApp" />
 
 </resources>

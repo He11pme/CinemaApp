@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    style="@style/Widget.CinemaApp.CoordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/Widget.CinemaApp.CoordinatorLayout"
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -13,6 +13,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
@@ -35,12 +36,12 @@
         android:id="@+id/rv_carousel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="false"
         android:layout_marginStart="@dimen/_10sdp"
+        android:fitsSystemWindows="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bottomAppBar"
+        android:id="@+id/bottom_app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -48,7 +49,7 @@
         app:fabCradleVerticalOffset="0dp">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
+            android:id="@+id/bottom_navigation_view"
             style="@style/Widget.CinemaApp.BottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -59,12 +60,12 @@
     </com.google.android.material.bottomappbar.BottomAppBar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/floating_action_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:src="@drawable/ico_home"
-        app:layout_anchor="@id/bottomAppBar"
+        app:layout_anchor="@id/bottom_app_bar"
         app:shapeAppearance="@style/ShapeAppearanceOverlay.MaterialComponents.FloatingActionButton" />
 
     <com.google.android.material.search.SearchView

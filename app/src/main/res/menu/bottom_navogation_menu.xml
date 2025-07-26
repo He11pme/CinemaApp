@@ -14,7 +14,9 @@
         android:title="Рандом"
         app:showAsAction="always" />
 
-    <item android:id="@+id/palceholder"
+    <item
+        android:id="@+id/palceholder"
+        android:enabled="false"
         android:title="" />
 
     <item

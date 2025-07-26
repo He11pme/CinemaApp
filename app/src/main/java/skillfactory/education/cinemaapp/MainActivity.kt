@@ -3,6 +3,8 @@ package skillfactory.education.cinemaapp
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,8 +13,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.carousel.CarouselLayoutManager
 import com.google.android.material.carousel.CarouselSnapHelper
 import com.google.android.material.carousel.UncontainedCarouselStrategy
+import com.google.android.material.navigation.NavigationBarView
 import kotlinx.coroutines.Runnable
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import skillfactory.education.cinemaapp.databinding.ActivityMainBinding
+import androidx.core.view.get
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -36,55 +43,53 @@ class MainActivity : AppCompatActivity() {
             WindowInsetsCompat.CONSUMED
         }
 
-        createCarousel()
+        Carousel(binding.rvCarousel).apply {
+            createCarousel()
+            startScrollPoster()
+        }
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.ic_bookmarks -> {
+                    showToastForMenu(item)
+                    true
+                }
 
-//        scrollPosters(binding.rvCarousel, snapHelper)
+                R.id.ic_dice -> {
+                    showToastForMenu(item)
+                    true
+                }
 
-    }
+                R.id.ic_journal -> {
+                    showToastForMenu(item)
+                    true
+                }
 
-    fun createCarousel() {
-        val imageList = mutableListOf(
-            R.drawable.film_one, R.drawable.film_two, R.drawable.film_three,
-            R.drawable.film_four, R.drawable.film_five, R.drawable.film_six,
-            R.drawable.film_seven, R.drawable.film_eight
-        )
+                R.id.ic_ticket -> {
+                    showToastForMenu(item)
+                    true
+                }
 
-        binding.rvCarousel.apply {
-            setHasFixedSize(true)
-            layoutManager = CarouselLayoutManager(UncontainedCarouselStrategy())
-            adapter = CarouselAdapter(imageList)
+                else -> false
+            }
         }
 
-        val snapHelper = CarouselSnapHelper().also {
-            it.attachToRecyclerView(binding.rvCarousel)
+        binding.floatingActionButton.setOnClickListener {
+            Toast.makeText(this, "Главная", Toast.LENGTH_SHORT).show()
         }
+
+        binding.toolbar.setNavigationOnClickListener {
+            Toast.makeText(this, "Меню", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.toolbar.setOnMenuItemClickListener {
+            showToastForMenu(it)
+            true
+        }
+
     }
 
-    fun autoScrollPosters(recyclerView: RecyclerView) {
-
+    fun showToastForMenu(item: MenuItem) {
+        Toast.makeText(this, "${item.title}", Toast.LENGTH_SHORT).show()
     }
 
-//    fun scrollPosters(recyclerView: RecyclerView, snapHelper: CarouselSnapHelper) {
-//        val handler = Handler(Looper.getMainLooper())
-//
-//        val scrollRunnable = object : Runnable {
-//            override fun run() {
-//                val itemCount = recyclerView.layoutManager?.itemCount ?: return
-//                val currentPosition = getCurrentPosition(recyclerView, snapHelper)
-//                val nextPosition =
-//                    if (currentPosition == RecyclerView.NO_POSITION || currentPosition + 1 >= itemCount) 0 else currentPosition + 1
-//                recyclerView.smoothScrollToPosition(nextPosition)
-//                handler.postDelayed(this, 10000)
-//            }
-//
-//        }
-//        handler.post(scrollRunnable)
-//    }
-//
-//    fun getCurrentPosition(recyclerView: RecyclerView, snapHelper: CarouselSnapHelper): Int {
-//        val layoutManager =
-//            recyclerView.layoutManager as? CarouselLayoutManager ?: return RecyclerView.NO_POSITION
-//        val snapView = snapHelper.findSnapView(layoutManager) ?: return RecyclerView.NO_POSITION
-//        return recyclerView.getChildAdapterPosition(snapView)
-//    }
 }
