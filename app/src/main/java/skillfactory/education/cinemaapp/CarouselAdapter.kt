@@ -8,8 +8,6 @@ import skillfactory.education.cinemaapp.databinding.PosterCarouselBinding
 
 class CarouselAdapter(private val filmList: List<Film>) :
     RecyclerView.Adapter<CarouselAdapter.CarouselViewHolder>() {
-
-    //Наверное стоит использовать обычный RecyclerView а не Carousel
     inner class CarouselViewHolder(private val binding: PosterCarouselBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(film: Film) {

@@ -8,6 +8,10 @@ import com.google.android.material.carousel.CarouselSnapHelper
 import com.google.android.material.carousel.UncontainedCarouselStrategy
 import kotlinx.coroutines.Runnable
 
+//Необходимо заменить на обычный LinearLayout
+//Потому что CarouselLayoutManager не работает при API ниже 29
+//Ну либо поднять версию до 29.
+//Думаю лучше первый вариант
 class Carousel(val carousel: RecyclerView) {
     val snapHelper = CarouselSnapHelper()
     fun createCarousel() {
@@ -48,9 +52,9 @@ class Carousel(val carousel: RecyclerView) {
                     if (currentPosition == RecyclerView.NO_POSITION || currentPosition + 1 >= itemCount) 0 else currentPosition + 1
                 carousel.smoothScrollToPosition(nextPosition)
             }
-
         }
-        handler.post(scrollRunnable)
+
+        handler.postDelayed(scrollRunnable, 10000)
     }
     private fun getCurrentPosition(): Int {
         val layoutManager = carousel.layoutManager

@@ -11,7 +11,7 @@ constraintlayout = "2.2.1"
 picasso = "2.8"
 sdpAndroid = "1.1.1"
 sspAndroid = "1.1.1"
-materialVersion = "1.14.0-alpha02"
+materialVersion = "1.14.0-alpha03"
 recyclerview = "1.4.0"
 kotlinxCoroutinesCore = "1.10.2"
 
