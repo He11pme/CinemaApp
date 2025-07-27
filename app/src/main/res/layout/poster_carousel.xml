@@ -8,7 +8,7 @@
     android:layout_margin="@dimen/_2sdp">
 
     <ImageView
-        android:id="@+id/poster"
+        android:id="@+id/iv_poster"
         android:layout_width="@dimen/_134sdp"
         android:layout_height="@dimen/_202sdp"
         android:scaleType="centerCrop"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_rating"
+        android:id="@+id/tv_imdb_rating"
         style="@style/Widget.CinemaApp.TextViewRatingFilm.Color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,12 +25,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_name"
+        android:id="@+id/tv_title"
         style="@style/Widget.CinemaApp.TextViewNameFilm.Color"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/poster" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_poster" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

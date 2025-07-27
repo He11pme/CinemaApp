@@ -8,8 +8,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import skillfactory.education.cinemaapp.databinding.ActivityMainBinding
 import skillfactory.education.cinemaapp.carousel.Carousel
+import skillfactory.education.cinemaapp.omdbapi.ListMovies
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -33,15 +36,25 @@ class MainActivity : AppCompatActivity() {
             WindowInsetsCompat.CONSUMED
         }
 
-        Carousel(binding.rvCarousel).apply {
-            createCarousel()
-            startScrollPoster()
-        }
-
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             binding.bottomNavigationView.background = null
         }
 
+        lifecycleScope.launch {
+            Carousel(binding.rvCarousel).apply {
+                createCarousel(ListMovies.todayInCinemaIdList)
+                startScrollPoster()
+            }
+        }
+
+    }
+
+
+    fun showToastForMenu(item: MenuItem) {
+        Toast.makeText(this, "${item.title}", Toast.LENGTH_SHORT).show()
+    }
+
+    fun buttonToast() {
         binding.bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.ic_bookmarks -> {
@@ -80,12 +93,6 @@ class MainActivity : AppCompatActivity() {
             showToastForMenu(it)
             true
         }
-
-
-    }
-
-    fun showToastForMenu(item: MenuItem) {
-        Toast.makeText(this, "${item.title}", Toast.LENGTH_SHORT).show()
     }
 
 }

@@ -4,22 +4,22 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import skillfactory.education.cinemaapp.Film
+import skillfactory.education.cinemaapp.Movie
 import skillfactory.education.cinemaapp.databinding.PosterCarouselBinding
 
-class CarouselAdapter(private val filmList: List<Film>) :
+class CarouselAdapter(private val movieList: List<Movie>) :
     RecyclerView.Adapter<CarouselAdapter.CarouselViewHolder>() {
     inner class CarouselViewHolder(private val binding: PosterCarouselBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(film: Film) {
+        fun bind(movie: Movie) {
             Picasso.get()
-                .load(film.poster)
+                .load(movie.poster)
                 .centerCrop()
                 .fit()
-                .into(binding.poster)
+                .into(binding.ivPoster)
 
-            binding.tvName.text = film.name
-            binding.tvRating.text = film.rating.toString()
+            binding.tvTitle.text = movie.title
+            binding.tvImdbRating.text = movie.imdbRating
         }
     }
 
@@ -40,11 +40,11 @@ class CarouselAdapter(private val filmList: List<Film>) :
         holder: CarouselViewHolder,
         position: Int
     ) {
-        holder.bind(filmList[position])
+        holder.bind(movieList[position])
     }
 
     override fun getItemCount(): Int {
-        return filmList.size
+        return movieList.size
     }
 
 }

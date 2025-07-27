@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--    Text View for rating film      -->
+
+    <style name="Widget.CinemaApp.TextViewRatingFilm.Color">
+
+        <item name="android:background">@color/orange_800</item>
+        <item name="android:textColor">@color/black</item>
+
+    </style>
+
+    <!--    Text View for name film      -->
+
+    <style name="Widget.CinemaApp.TextViewNameFilm.Color">
+
+        <item name="android:textColor">@color/gray_400</item>
+
+    </style>
+
+    <!--    Text View for Title      -->
+
+    <style name="Widget.CinemaApp.TextViewTitle.Color">
+
+        <item name="android:textColor">@color/gray_400</item>
+
+    </style>
+
+</resources>
