@@ -1,9 +1,10 @@
-package skillfactory.education.cinemaapp
+package skillfactory.education.cinemaapp.carousel
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import skillfactory.education.cinemaapp.Film
 import skillfactory.education.cinemaapp.databinding.PosterCarouselBinding
 
 class CarouselAdapter(private val filmList: List<Film>) :

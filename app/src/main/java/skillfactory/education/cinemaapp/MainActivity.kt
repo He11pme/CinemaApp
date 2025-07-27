@@ -1,25 +1,15 @@
 package skillfactory.education.cinemaapp
 
+import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.carousel.CarouselLayoutManager
-import com.google.android.material.carousel.CarouselSnapHelper
-import com.google.android.material.carousel.UncontainedCarouselStrategy
-import com.google.android.material.navigation.NavigationBarView
-import kotlinx.coroutines.Runnable
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import skillfactory.education.cinemaapp.databinding.ActivityMainBinding
-import androidx.core.view.get
+import skillfactory.education.cinemaapp.carousel.Carousel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -47,6 +37,11 @@ class MainActivity : AppCompatActivity() {
             createCarousel()
             startScrollPoster()
         }
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            binding.bottomNavigationView.background = null
+        }
+
         binding.bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.ic_bookmarks -> {
@@ -85,6 +80,7 @@ class MainActivity : AppCompatActivity() {
             showToastForMenu(it)
             true
         }
+
 
     }
 

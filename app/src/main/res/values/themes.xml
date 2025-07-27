@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.CinemaApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Base.Theme.CinemaApp" parent="Theme.Material3.DayNight.NoActionBar">
 
         <item name="bottomAppBarStyle">@style/Widget.CinemaApp.BottomAppBar</item>
         <item name="floatingActionButtonStyle">@style/Widget.CinemaApp.FloatingActionButton</item>
@@ -16,7 +16,7 @@
 
     <!--    App Bar Layout     -->
 
-    <style name="Widget.CinemaApp.AppBarLayout" parent="Widget.MaterialComponents.AppBarLayout.Primary">
+    <style name="Widget.CinemaApp.AppBarLayout" parent="Widget.Material3.AppBarLayout">
 
         <item name="materialThemeOverlay">@style/ThemeOverlay.CinemaApp.AppBarLayout</item>
 
@@ -30,21 +30,21 @@
 
     <!--    Bottom App Bar      -->
 
-    <style name="Widget.CinemaApp.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">
+    <style name="Widget.CinemaApp.BottomAppBar" parent="Widget.Material3.BottomAppBar.Legacy">
 
         <item name="materialThemeOverlay">@style/ThemeOverlay.CinemaApp.BottomAppBar</item>
 
     </style>
 
-    <style name="ThemeOverlay.CinemaApp.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">
+    <style name="ThemeOverlay.CinemaApp.BottomAppBar" parent="ThemeOverlay.Material3.BottomAppBar.Legacy">
 
-        <item name="colorSurface">@color/blue_gray_50</item>
+        <item name="colorSurfaceContainer">@color/blue_gray_50</item>
 
     </style>
 
     <!--    Bottom Navigation View      -->
 
-    <style name="Widget.CinemaApp.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+    <style name="Widget.CinemaApp.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
 
         <item name="android:background">@color/transparent</item>
         <item name="itemGravity">center</item>
@@ -54,10 +54,10 @@
 
     </style>
 
-    <style name="ThemeOverlay.CinemaApp.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+    <style name="ThemeOverlay.CinemaApp.BottomNavigationView" parent="ThemeOverlay.Material3.BottomNavigationView">
 
-        <item name="colorSecondary">@color/blue_400</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondaryContainer">@color/blue_gray_100</item>
+        <item name="colorOnSecondaryContainer">@color/blue_700</item>
 
         <item name="colorOnSurfaceVariant">@color/gray_700</item>
 
@@ -65,18 +65,18 @@
 
     <!--    Floating Action Button      -->
 
-    <style name="Widget.CinemaApp.FloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
+    <style name="Widget.CinemaApp.FloatingActionButton" parent="Widget.Material3.FloatingActionButton.Primary">
 
-        <!-- fabCustomSize нет в MaterialComponents 1.x, можно убрать или заменить -->
+        <item name="fabCustomSize">80dp</item>
         <item name="maxImageSize">28dp</item>
         <item name="materialThemeOverlay">@style/ThemeOverlay.CinemaApp.FloatingActionButton</item>
 
     </style>
 
-    <style name="ThemeOverlay.CinemaApp.FloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
+    <style name="ThemeOverlay.CinemaApp.FloatingActionButton" parent="ThemeOverlay.Material3.FloatingActionButton.Primary">
 
-        <item name="colorPrimary">@color/blue_400</item>
-        <!--        <item name="shapeAppearance">@style/ShapeAppearance.MaterialComponents.Corner.Large</item>-->
+        <item name="colorPrimaryContainer">@color/blue_400</item>
+        <item name="shapeAppearanceCornerLarge">@style/ShapeAppearance.Material3.Corner.Large</item>
 
     </style>
 
@@ -114,6 +114,7 @@
         <item name="android:textColor">@color/black</item>
 
     </style>
+
 
     <style name="Theme.CinemaApp" parent="Base.Theme.CinemaApp" />
 
