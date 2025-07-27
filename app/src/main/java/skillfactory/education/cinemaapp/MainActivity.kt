@@ -1,13 +1,18 @@
 package skillfactory.education.cinemaapp
 
+import android.os.Build
 import android.os.Bundle
-import android.view.View
-import android.widget.LinearLayout
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import skillfactory.education.cinemaapp.databinding.ActivityMainBinding
+import skillfactory.education.cinemaapp.carousel.Carousel
+import skillfactory.education.cinemaapp.omdbapi.ListMovies
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -18,10 +23,76 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            //Неправильно отображается bottomAppBar.
+            //Пришлось сделать отрицательный отступ на высоту navBarHeight
+            val navBarHeight = insets.getInsets(WindowInsetsCompat.Type.navigationBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, -navBarHeight.bottom)
             insets
         }
 
+        ViewCompat.setOnApplyWindowInsetsListener(binding.searchView) { v, insets ->
+            // Полностью отключил отступы для searchView
+            v.setPadding(0, 0, 0, 0)
+            WindowInsetsCompat.CONSUMED
+        }
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            binding.bottomNavigationView.background = null
+        }
+
+        lifecycleScope.launch {
+            Carousel(binding.rvCarousel).apply {
+                createCarousel(ListMovies.todayInCinemaIdList)
+                startScrollPoster()
+            }
+        }
+
+    }
+
+
+    fun showToastForMenu(item: MenuItem) {
+        Toast.makeText(this, "${item.title}", Toast.LENGTH_SHORT).show()
+    }
+
+    fun buttonToast() {
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.ic_bookmarks -> {
+                    showToastForMenu(item)
+                    true
+                }
+
+                R.id.ic_dice -> {
+                    showToastForMenu(item)
+                    true
+                }
+
+                R.id.ic_journal -> {
+                    showToastForMenu(item)
+                    true
+                }
+
+                R.id.ic_ticket -> {
+                    showToastForMenu(item)
+                    true
+                }
+
+                else -> false
+            }
+        }
+
+        binding.floatingActionButton.setOnClickListener {
+            Toast.makeText(this, "Главная", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.toolbar.setNavigationOnClickListener {
+            Toast.makeText(this, "Меню", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.toolbar.setOnMenuItemClickListener {
+            showToastForMenu(it)
+            true
+        }
     }
 
 }

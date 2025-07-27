@@ -3,5 +3,102 @@
     <style name="Base.Theme.CinemaApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="bottomAppBarStyle">@style/Widget.CinemaApp.BottomAppBar</item>
+        <item name="floatingActionButtonStyle">@style/Widget.CinemaApp.FloatingActionButton</item>
+        <item name="appBarLayoutStyle">@style/Widget.CinemaApp.AppBarLayout</item>
+        <item name="toolbarStyle">@style/Widget.CinemaApp.Toolbar</item>
+
     </style>
+
+    <style name="Widget.CinemaApp.CoordinatorLayout" parent="Widget.Support.CoordinatorLayout">
+
+        <item name="android:background">@color/gray_900</item>
+
+    </style>
+
+    <!--    App Bar Layout     -->
+
+    <style name="Widget.CinemaApp.AppBarLayout" parent="Widget.Material3.AppBarLayout">
+
+        <item name="materialThemeOverlay">@style/ThemeOverlay.CinemaApp.AppBarLayout</item>
+
+    </style>
+
+    <style name="ThemeOverlay.CinemaApp.AppBarLayout" parent="">
+
+        <item name="colorSurface">@color/gray_900</item>
+
+    </style>
+
+    <!--    Toolbar     -->
+
+    <style name="Widget.CinemaApp.Toolbar" parent="Widget.Material3.Toolbar">
+
+        <item name="materialThemeOverlay">@style/ThemeOverlay.CinemaApp.Toolbar</item>
+
+    </style>
+
+    <style name="ThemeOverlay.CinemaApp.Toolbar" parent="">
+
+        <item name="colorOnSurfaceVariant">@color/gray_400</item>
+        <item name="navigationIconTint">@color/gray_400</item>
+
+    </style>
+
+    <!--    Bottom App Bar      -->
+
+    <style name="Widget.CinemaApp.BottomAppBar" parent="Widget.Material3.BottomAppBar.Legacy">
+
+        <item name="materialThemeOverlay">@style/ThemeOverlay.CinemaApp.BottomAppBar</item>
+
+    </style>
+
+    <style name="ThemeOverlay.CinemaApp.BottomAppBar" parent="ThemeOverlay.Material3.BottomAppBar.Legacy">
+
+        <item name="colorSurfaceContainer">@color/blue_gray_900</item>
+
+    </style>
+
+    <!--    Bottom Navigation View      -->
+
+    <style name="Widget.CinemaApp.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+
+        <item name="android:background">@color/transparent</item>
+        <item name="itemGravity">center</item>
+        <item name="itemIconSize">@dimen/_20sdp</item>
+        <item name="itemTextColor">@color/orange_800</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.CinemaApp.BottomNavigationView</item>
+
+    </style>
+
+    <style name="ThemeOverlay.CinemaApp.BottomNavigationView" parent="ThemeOverlay.Material3.BottomNavigationView">
+
+        <item name="colorSecondaryContainer">@color/blue_gray_800</item>
+        <item name="colorOnSecondaryContainer">@color/orange_800</item>
+
+        <item name="colorOnSurfaceVariant">@color/gray_500</item>
+
+    </style>
+
+    <!--    Floating Action Button      -->
+
+    <style name="Widget.CinemaApp.FloatingActionButton" parent="Widget.Material3.FloatingActionButton.Primary">
+
+        <item name="fabCustomSize">80dp</item>
+        <item name="maxImageSize">28dp</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.CinemaApp.FloatingActionButton</item>
+
+    </style>
+
+    <style name="ThemeOverlay.CinemaApp.FloatingActionButton" parent="ThemeOverlay.Material3.FloatingActionButton.Primary">
+
+        <item name="colorPrimaryContainer">@color/orange_800</item>
+        <item name="shapeAppearanceCornerLarge">@style/ShapeAppearance.Material3.Corner.Large</item>
+
+    </style>
+
+    <style name="Theme.CinemaApp" parent="Base.Theme.CinemaApp" />
+
 </resources>

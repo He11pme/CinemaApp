@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/ic_bookmarks"
+        android:icon="@drawable/ico_bookmarks"
+        android:title="Закладки"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/ic_dice"
+        android:icon="@drawable/ico_dice"
+        android:title="Рандом"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/palceholder"
+        android:enabled="false"
+        android:title="" />
+
+    <item
+        android:id="@+id/ic_journal"
+        android:icon="@drawable/ico_journal"
+        android:title="Журнал"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/ic_ticket"
+        android:icon="@drawable/ico_ticket"
+        android:title="Билеты"
+        app:showAsAction="always" />
+
+</menu>

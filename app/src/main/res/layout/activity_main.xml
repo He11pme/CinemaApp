@@ -1,37 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    style="@style/Widget.CinemaApp.CoordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            app:buttonGravity="center_vertical"
+            app:menu="@menu/top_app_bar"
+            app:navigationIcon="@drawable/ico_menu">
+
+            <com.google.android.material.search.SearchBar
+                android:id="@+id/search_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/top_app_bar_search"
+                app:textCentered="true" />
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                style="@style/Widget.CinemaApp.TextViewTitle.Color"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/_10sdp"
+                android:text="Сейчас в кино" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_carousel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:fitsSystemWindows="false"
+                android:paddingStart="@dimen/_10sdp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottom_app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_gravity="bottom"
+        app:fabCradleRoundedCornerRadius="@dimen/_10sdp"
+        app:fabCradleVerticalOffset="0dp">
 
-    <LinearLayout
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation_view"
+            style="@style/Widget.CinemaApp.BottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            app:menu="@menu/bottom_navogation_menu" />
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_action_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:src="@drawable/ico_home"
+        app:layout_anchor="@id/bottom_app_bar"
+        app:shapeAppearance="@style/ShapeAppearanceOverlay.MaterialComponents.FloatingActionButton" />
+
+    <com.google.android.material.search.SearchView
+        android:id="@+id/search_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="@dimen/_10sdp"
-        android:background="@color/orange"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        android:layout_height="match_parent"
+        app:layout_anchor="@id/search_bar" />
 
-    </LinearLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_50sdp"
-        android:background="?attr/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!--    <com.google.android.material.floatingtoolbar.FloatingToolbarLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="?attr/actionBarSize"-->
+    <!--        android:layout_gravity="bottom|center"-->
+    <!--        android:layout_margin="@dimen/_16sdp"-->
+    <!--        app:layout_behavior="com.google.android.material.behavior.HideViewOnScrollBehavior">-->
+
+    <!--        <com.google.android.material.overflow.OverflowLinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_gravity="center"-->
+    <!--            android:orientation="horizontal">-->
+
+    <!--            <com.google.android.material.button.MaterialButton-->
+    <!--                style="?attr/materialIconButtonStyle"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_weight="1"-->
+    <!--                android:width="0dp"-->
+    <!--                app:icon="@drawable/ico_home"-->
+    <!--                app:iconGravity="textStart"-->
+    <!--                app:iconSize="@dimen/_24sdp" />-->
+
+    <!--            <com.google.android.material.button.MaterialButton-->
+    <!--                style="?attr/materialIconButtonStyle"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_weight="1"-->
+    <!--                android:width="0dp"-->
+    <!--                app:icon="@drawable/ico_bookmarks"-->
+    <!--                app:iconGravity="textStart"-->
+    <!--                app:iconSize="@dimen/_24sdp" />-->
+
+    <!--            <com.google.android.material.button.MaterialButton-->
+    <!--                style="?attr/materialIconButtonStyle"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_weight="1"-->
+    <!--                android:width="0dp"-->
+    <!--                app:icon="@drawable/ico_journal"-->
+    <!--                app:iconGravity="textStart"-->
+    <!--                app:iconSize="@dimen/_24sdp" />-->
+
+    <!--            <com.google.android.material.button.MaterialButton-->
+    <!--                style="?attr/materialIconButtonStyle"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_weight="1"-->
+    <!--                android:width="0dp"-->
+    <!--                app:icon="@drawable/ico_dice"-->
+    <!--                app:iconGravity="textStart"-->
+    <!--                app:iconSize="@dimen/_24sdp" />-->
+
+    <!--        </com.google.android.material.overflow.OverflowLinearLayout>-->
+
+    <!--    </com.google.android.material.floatingtoolbar.FloatingToolbarLayout>-->
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
