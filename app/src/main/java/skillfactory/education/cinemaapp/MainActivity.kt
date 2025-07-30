@@ -1,13 +1,21 @@
 package skillfactory.education.cinemaapp
 
+import android.app.Activity
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
+import android.view.WindowInsetsController
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.marginTop
+import androidx.core.view.setPadding
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 import skillfactory.education.cinemaapp.databinding.ActivityMainBinding
@@ -18,26 +26,26 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            //Неправильно отображается bottomAppBar.
-            //Пришлось сделать отрицательный отступ на высоту navBarHeight
-            val navBarHeight = insets.getInsets(WindowInsetsCompat.Type.navigationBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, -navBarHeight.bottom)
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.bottomAppBar) { view, insets ->
+            view.setPadding(view.paddingLeft, view.paddingTop, view.paddingRight, 0) // Убираем нижний отступ
             insets
         }
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.searchView) { v, insets ->
-            // Полностью отключил отступы для searchView
-            v.setPadding(0, 0, 0, 0)
-            WindowInsetsCompat.CONSUMED
+        ViewCompat.setOnApplyWindowInsetsListener(binding.toolbar) { view, insets ->
+            val topInset = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
+            view.setPadding(view.paddingLeft, topInset, view.paddingRight, view.paddingBottom)
+            insets
         }
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             binding.bottomNavigationView.background = null
+        }
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.BAKLAVA) {
+            @Suppress("DEPRECATION")
+            window.statusBarColor = Color.TRANSPARENT
         }
 
         lifecycleScope.launch {

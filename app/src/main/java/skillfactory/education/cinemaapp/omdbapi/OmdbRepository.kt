@@ -1,6 +1,7 @@
 package skillfactory.education.cinemaapp.omdbapi
 
 import android.content.Context
+import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
@@ -17,6 +18,7 @@ class OmdbRepository {
         val file = File(context.filesDir, "$id.json")
         if (!file.exists()) {
             withContext(Dispatchers.IO) {
+                Log.d("OMDb API", "Download movie")
                 val response = api.getMovie(id, apiKey).execute()
                 if (response.isSuccessful) {
                     val json = response.body()
@@ -25,6 +27,8 @@ class OmdbRepository {
                     }
                 }
             }
+        } else {
+            Log.d("OMDb API", "Movie is created")
         }
     }
 

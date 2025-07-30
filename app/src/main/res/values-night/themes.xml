@@ -3,8 +3,8 @@
     <style name="Base.Theme.CinemaApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="android:windowLightStatusBar">false</item>
 
-        <item name="android:windowLightStatusBar">true</item>
         <item name="bottomAppBarStyle">@style/Widget.CinemaApp.BottomAppBar</item>
         <item name="floatingActionButtonStyle">@style/Widget.CinemaApp.FloatingActionButton</item>
         <item name="appBarLayoutStyle">@style/Widget.CinemaApp.AppBarLayout</item>

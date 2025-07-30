@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.CinemaApp" parent="Theme.Material3.DayNight.NoActionBar">
-
+        <item name="android:windowLightStatusBar">true</item>
         <item name="bottomAppBarStyle">@style/Widget.CinemaApp.BottomAppBar</item>
         <item name="floatingActionButtonStyle">@style/Widget.CinemaApp.FloatingActionButton</item>
         <item name="appBarLayoutStyle">@style/Widget.CinemaApp.AppBarLayout</item>
