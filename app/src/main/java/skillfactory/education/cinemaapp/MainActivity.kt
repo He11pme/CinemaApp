@@ -2,6 +2,7 @@ package skillfactory.education.cinemaapp
 
 import android.app.Activity
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
@@ -28,7 +29,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         ViewCompat.setOnApplyWindowInsetsListener(binding.bottomAppBar) { view, insets ->
             view.setPadding(view.paddingLeft, view.paddingTop, view.paddingRight, 0) // Убираем нижний отступ
             insets
@@ -43,8 +43,9 @@ class MainActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             binding.bottomNavigationView.background = null
         }
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.BAKLAVA) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.VANILLA_ICE_CREAM) {
             @Suppress("DEPRECATION")
+            WindowCompat.setDecorFitsSystemWindows(window, false)
             window.statusBarColor = Color.TRANSPARENT
         }
 
@@ -53,6 +54,8 @@ class MainActivity : AppCompatActivity() {
                 createCarousel(ListMovies.todayInCinemaIdList)
                 startScrollPoster()
             }
+
+
         }
 
     }

@@ -6,7 +6,6 @@
     style="@style/Widget.CinemaApp.CoordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -27,6 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/top_app_bar_search"
+                app:elevation="0dp"
                 app:textCentered="true" />
 
         </com.google.android.material.appbar.MaterialToolbar>
@@ -60,6 +60,7 @@
                 android:clipToPadding="false"
                 android:fitsSystemWindows="false"
                 android:paddingStart="@dimen/_10sdp" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
@@ -96,8 +97,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_anchor="@id/search_bar" />
-
-
 
 
     <!--    <com.google.android.material.floatingtoolbar.FloatingToolbarLayout-->

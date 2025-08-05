@@ -5,6 +5,8 @@
         <item name="bottomAppBarStyle">@style/Widget.CinemaApp.BottomAppBar</item>
         <item name="floatingActionButtonStyle">@style/Widget.CinemaApp.FloatingActionButton</item>
         <item name="appBarLayoutStyle">@style/Widget.CinemaApp.AppBarLayout</item>
+        <item name="android:navigationBarColor">@color/blue_gray_50</item>
+        <item name="android:windowLightNavigationBar">true</item>
 
     </style>
 
